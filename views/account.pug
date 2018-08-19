@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  div.header-wrapper
+        ol.breadcrumb
+          li
+            a(href="home")
+              |Tuetle
+          li.active
+              |#{title} 
+  form.signup.well(action = "/update" method = "post")
+    div#avatar
+    div.input-group
+      lable(for = "username")
+        input(type="text" id="username" name="username" placeholder="username" required)
+      lable(for = "password")
+        input(type="password" id="password" name="password" placeholder="password" required)
+      lable(for = "phone")
+        input(type= "text" id="phone" name="phone" placeholder="phone" required)
+      lable(for = "email")
+        input(type="text" id="email" name="email" placeholder="email" required)
+      lable(for = "age")
+          input(type="number" id="age" name="age" placeholder="age" required)
+      lable(for = "bio")
+        textarea#bio(name="bio"  cols="30" rows="10" placeholder="Add a Bio" required)
+    div.control-btn
+      input(type = "submit" value="update" )
+      a(href="/login")
+        |login
+block  scripts
+    script(src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js')
+    scrript(src='/js/conrollers/userController.js')
+    script(src='/js/view/account.js')

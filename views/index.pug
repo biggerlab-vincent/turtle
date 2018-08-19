@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  .wrapper
+    div.header-wrapper
+        ol.breadcrumb
+          li
+            a(href="home")
+              |Tuetle
+          li.active
+              |#{title} 
+        .dropdown
+          button.user-info.btn.btn-default.dropdown-toggle#dropdownMenu1(data-toggle="dropdown" aria-haspopup="true" aria-expanded="true")
+            |#{user.username}
+            span.caret
+          ul.dropdown-menu(aria-labelledby="dropdownMenu1")
+            li
+                a#mycode(href="/mycode")
+                  |Mycode
+            li
+              a#account(href="/account")
+                |Account
+            li(role="separator" class="divider")
+            li
+              a#logout(href="/login")
+                |logout 
+    div.editor.body-wrapper
+      .pane-wrapper
+        .control-list
+          button.btn.btn-small(type="button" onclick="runit()") 
+            |Run 
+          //button.btn.btn-small(type="button" onclick="stopit()") 
+          //|Stop 
+          button.btn.btn-small(type="button" onclick="save()") 
+            |Save 
+          button.btn.btn-small(type="button" onclick="saveas()") 
+            |Save as 
+        textarea#yourcode
+          |import turtle
+          |t = turtle
+          |print "start" 
+          |for i in range(50):
+          |    t.forward(i)
+          |    t.left(53)
+          |print "Hello World" 
+      .canvas-wrapper
+        ul.nav.nav-tabs
+          li(role="presentation" class="active" id="result-btn")
+            a(href="#")
+              |result
+          li(role="presentation" id="console-btn")
+            a(href="#")
+              span.glyphicon.glyphicon-remove-sign.hide
+              | console
+        pre#output.hide
+        <!-- If you want turtle graphics include a canvas -->
+        div#mycanvas
+        include modals/alert
+        //include modals/confirm
+
+block  scripts
+    script(src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js')
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    script(src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" )
+    <!-- 引入CodeMirror核心文件 -->
+    script(src='/js/common/skulpt.min.js')
+    script(src='/js/common/skulpt-stdlib.js')
+    script(src='/lib/codemirror-5.39.0/lib/codemirror.js')
+    script(src="/lib/codemirror-5.39.0/mode/python/python.js")
+    script(src='/js/controllers/turtleController.js')
+    script(src='/js/controllers/userController.js')

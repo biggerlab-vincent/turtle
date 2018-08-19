@@ -1,0 +1,330 @@
+body{
+  margin:0;
+}
+a {
+  color: #00B7FF;
+}
+a:hover{
+  text-decoration:none; 
+}
+.up{
+  z-index: 999;
+}
+.hide{
+  display: none;
+}
+.show{
+  display:  block;
+}
+.wrapper{
+  width:100%;
+  height:100%;
+  flex:1;
+  position:fixed;
+  display: flex;
+  flex-direction:column; 
+}
+.header-wrapper{
+  height: 60px;
+  background-color:#f4f4f5;
+  flex-direction:row;
+  align-items:center;
+  border-bottom: 1px solid #e4e4e4;
+}
+.body-wrapper{
+  flex:1;
+  display: flex;
+  flex-direction:row; 
+  justify-content: flex-start
+}
+.body-wrapper .pane-wrapper{
+  flex-direction:column;  
+  flex:1;
+  border-right: 10px solid #ddd;
+}
+.CodeMirror{
+  height: 100%;
+}
+.glyphicon {
+  margin-right: 2px;
+  top: 3px;
+}
+#output{
+  height: 90%;
+  font-size: 14px;
+  overflow: auto; /* 超出宽度出现滑动条 */
+  border-top:0px solid #fff;
+}
+#mycanvas{
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  outline: none;
+  box-sizing: border-box;
+  border-left: 1px solid #ddd;
+  position: relative;
+  display: block;
+  margin-top: 0px;
+  z-index: 3;
+}
+.body-wrapper .canvas-wrapper{
+  flex:1;
+  flex-direction: column;
+}
+
+
+
+/*
+login signup
+*/
+.login{
+  width: 50%;
+  height: 60%;
+  margin:  100px auto ;
+  padding: 20px;
+  border: 4px solid #d0d0d6;
+  padding: 30px;
+  border-radius: 20px;
+}
+.login .btn-group-vertical{
+  margin-top: 20px;
+}
+.login .btn-group-vertical input{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 70%;
+    height: 45px;
+    font-size: 20px;
+    border: 1px solid rgb(239, 240, 241);
+    outline: 0px;
+    font-family: inherit;
+    padding: 14px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    margin-right: 2.5%;
+    border-radius: 3px;
+}
+.login .control-btn  input{
+  padding: 12px;
+    width: 70%;
+    border: 0px;
+    outline: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: rgb(220, 238, 222);
+    font-size: 16px;
+    color: rgb(120, 176, 135);
+    cursor: pointer;
+}
+.login .control-btn .signup{
+  width: 70%;
+  padding: 12px;
+  min-width: 140px;
+  border: 0px;
+  outline: 0px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  background: rgb(220, 238, 222);
+  font-size: 16px;
+  color: rgb(120, 176, 135);
+  cursor: pointer;
+  text-align: center;
+}
+.login .control-btn .signup a{
+  color: rgb(120, 176, 135);
+}
+.well{
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows:  280px 50px;
+  width: 60%;
+  margin: 170px auto;
+}
+.well #avatar {
+  grid-column-start:1;
+  grid-column-end:2;
+  margin:  0 auto;
+}
+.well .input-group{
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.well .input-group input{
+    box-sizing: border-box;
+    width: 48.5%;
+    height: 45px;
+    font-size: 20px;
+    border: 1px solid rgb(239, 240, 241);
+    border-radius: 5px;
+    outline: 0px;
+    font-family: inherit;
+    padding: 14px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+.well .input-group #bio{
+  box-sizing: border-box;
+  width: 100%;
+  height: 5.25em;
+  font-size: 1.125em;
+  border: 1px solid rgb(239, 240, 241);
+  outline: 0px;
+  font-family: inherit;
+  padding: 14px 63px 14px 14px;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 0px;
+  resize: none;
+  border-radius: 5px;
+}
+#avatar{
+  position: relative;
+    height: 8em;
+    display: inline-block;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 19px;
+    width: 8em;
+  cursor: pointer;
+    position: relative;
+    border: 1px dashed silver;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 8em;
+    color: rgb(180, 180, 180);
+    width: 8em;
+    border-radius: 100%;
+    background-image: url(https://www.gravatar.com/avatar/3ca7ccc…?d=https://repl.it/public/images/evalbot/evalbot_31.png&s=256);
+    background-position: center center;
+    background-size: cover;
+}
+.well .control-btn{
+  grid-column-start:2;
+  grid-column-end:3;
+}
+.well .control-btn input{  
+  margin: 0px 0 0 20px;
+  float: left;
+  padding: 12px;
+  min-width: 140px;
+  border: 0px;
+  outline: 0px;
+  /* margin-top: 10px; */
+  /* margin-bottom: 30px; */
+  background: rgb(220, 238, 222);
+  font-size: 16px;
+  color: rgb(120, 176, 135);
+  cursor: pointer;
+  border-radius: 5px;
+}
+.well .control-btn a{  
+  padding: 12px;
+    margin: 0px 20px 0 0px;
+    min-width: 140px;
+    border: 0px;
+    outline: 0px;
+    /* margin-top: 10px; */
+    /* margin-bottom: 30px; */
+    background: rgb(220, 238, 222);
+    font-size: 16px;
+    color: rgb(120, 176, 135);
+    cursor: pointer;
+    float: right;
+    text-align: center;
+}
+.dropdown{
+  float: right;
+  margin: 13px 30px;
+}
+#dropdownMenu1{
+  width: 160px;
+}
+.breadcrumb {
+  margin: 12px;
+  width: 50%;
+  float: left;
+}
+
+/*
+mycode
+*/
+
+.code-container{
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid rgba(128,127,127,0.17);
+  margin-bottom: 40px;
+  background-color: #fbfbfb;
+  position: relative;
+}
+.code-container .continue-title{
+  width: 90%;
+  font-family: Raleway,sans-serif;
+  color: #424242;
+  text-align: left;
+  font-size: 18px;
+  padding: 30px;
+  padding: 20px;
+  margin: 0 auto;
+}
+.code-container .mycode{
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  margin: 20px auto;
+}
+.code-container .mycode .code-demo{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 300px;
+  padding: 10px;
+  align-items: center;
+  text-decoration: none;
+  background-color: white;
+  box-shadow: 0 2px 2px 0px rgba(0,0,0,0.1);
+  color: #424242;
+  margin: 10px;
+}
+.code-container .mycode .code-demo .code-icon{
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  flex: 0 0 auto;
+}
+.code-container .mycode .code-demo .code-info{
+  overflow: hidden;
+}
+.code-container .mycode .code-demo .code-info .code-title{
+  color: #7F7F7F;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 20px;
+}
+.code-container .mycode .code-demo .code-info .code-text{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(128,127,127,0.7);
+  font-size: 3vw;
+}
+.distbin{
+  width: 90%;
+  font-family: Raleway,sans-serif;
+  color: #424242;
+  text-align: right;
+  font-size: 18px;
+  margin: 0 auto;
+}
+.distbin img{
+  height: 80px;
+  margin-right: 10%;
+}

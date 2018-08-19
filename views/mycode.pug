@@ -1,0 +1,32 @@
+extends layout
+block content
+    .header-wrapper
+      ol.breadcrumb
+        li
+          a(href="home")
+            |Tuetle
+        li.active
+            |#{title} 
+    .code-container
+      .continue-title
+        |Continue coding
+      .mycode#mycode
+        a.code-demo( href="#" draggable="true" ondragstart="drag(event);")
+            .code-icon  
+              img(src="/images/python_turtle.svg" alt="Python (with Turtle)")
+            .code-info
+              .code-title
+                |Unco
+              .code-time
+                |Last edited 
+      .distbin
+        img#gb(draggable="false" src="/images/close.png" alt="垃圾桶")
+        
+
+         
+      
+
+block  scripts
+    script(src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js')
+    script(src='/js/controllers/userController.js')
+    script(src='/js/view/mycode.js')
