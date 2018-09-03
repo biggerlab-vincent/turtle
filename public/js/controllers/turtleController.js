@@ -57,7 +57,7 @@ var editor = CodeMirror.fromTextArea(myTextarea, {
     gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
     matchBrackets: true,  //括号匹配
   });
-//editor.setSize('600px', '754px');
+editor.setSize('100%', '790px');
 $("#result-btn").click(function(){
     $("#mycanvas").removeClass("hide");
     $("#output").addClass("hide");
@@ -140,7 +140,7 @@ function editorModalAlert(){
 }  
 })(jQuery);  
 var id = $.getUrlParam('id');
-console.log(id);
+//console.log(id);
 if(id){
     $.ajax({
         type: "POST",
@@ -154,3 +154,19 @@ if(id){
         dataType: "json"
     })
 } 
+var fold = document.getElementById('fold');
+var status = "open";
+//edit my code
+$(".fold").on("click" , function(event){  
+	if (status == "open"){
+		$('.fold').attr({src:"/images/assets/unfold-icon-03.png"})
+		$(".side-info p").hide();
+		$(".wrapper").addClass('open')
+		status = "close";
+	}else{
+		$('.fold').attr({src:"/images/assets/shrink-icon-04.png"})
+		$(".side-info  p").show();
+		$(".wrapper").removeClass('open')
+		status = "open";
+	}
+}) 

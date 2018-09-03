@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title= title
+    //link(rel="icon" type="image/x-icon" href="favicon.ico")
+    link(rel='stylesheet', href='/lib/codemirror-5.39.0/lib/codemirror.css')
+    link(rel='stylesheet', href='/lib/codemirror-5.39.0/theme/solarized.css')
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    link( rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    link( rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" )
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body.login-body
+    block head
+    block content
+    block scripts

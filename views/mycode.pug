@@ -1,12 +1,44 @@
 extends layout
 block content
+  .wrapper
+    aside.side-info
+      a(href="#")
+        img.fold(src='/images/assets/shrink-icon-04.png') 
+      ol
+        li
+          a(href="/")
+            icon
+              img(src='/images/assets/home-icon-03.png') 
+            p
+              |Home
+        li.active
+          a(href="/mycode")
+            icon
+              img(src='/images/assets/mycode-icon-04.png') 
+            p
+              |Mycode
+        li
+          a(href="/account")
+            icon
+              img(src='/images/assets/accound-icon-03.png') 
+            p
+              |Account
     .header-wrapper
       ol.breadcrumb
         li
           a(href="home")
-            |Tuetle
+            |Truetle
         li.active
             |#{title} 
+      .user-info
+        #logout
+          a(href="/login")
+            img(src='/images/assets/exit-icon-04.png') 
+        .user-name
+          p
+            |#{user.username} 
+        .icon
+          img(src='/images/assets/user-icon-03.png')
     .code-container
       .continue-title
         |Continue coding
@@ -20,7 +52,7 @@ block content
               .code-time
                 |Last edited 
       .distbin
-        img#gb(draggable="false" src="/images/close.png" alt="垃圾桶")
+        img#gb(draggable="false" src="/images/assets/rubbish-icon.png" alt="垃圾桶")
         
 
          

@@ -6,7 +6,7 @@ $(document).ready(
 function loadCode() {
 	$.post('/mycode',function(data){
 		if(data.length == 0){
-			var inserthtml = '<h1>Please save your code!</h1>'
+			var inserthtml = '<h1 id="code-list-title">Please save your code!</h1>'
 			$(".code-container").html(inserthtml)
 		}else{
 			for(i=1; i<data.length; i++){
@@ -45,17 +45,17 @@ function drag(event){
 gb.ondragover= function(e){
 	//console.log(this)
 	e.preventDefault();  //阻止默认行为
-	this.setAttribute("src","/images/open.png")
+	this.setAttribute("src","/images/assets/rubbish-icon-05-01.png")
 }
 //为目标对象添加事件监听 —— 删除拖动的源对象
 gb.ondragleave= function(e){
 	//console.log(this)
 	e.preventDefault();  //阻止默认行为
-	this.setAttribute("src","/images/close.png")
+	this.setAttribute("src","/images/assets/rubbish-icon.png")
 }
 gb.ondrop= function(e){ //源对象松手释放在了目标对象中
 	//删除被拖动的源对象
-	this.setAttribute("src","/images/close.png")
+	this.setAttribute("src","/images/assets/rubbish-icon.png")
 	var a = document.getElementById(selectID);
 	console.log(selectID);
 	mycode.removeChild(a);  //从父元素中删除子节点
@@ -69,16 +69,29 @@ gb.ondrop= function(e){ //源对象松手释放在了目标对象中
 	})
 	var codeDemoNumber = document.getElementsByClassName('code-demo');
 	if(codeDemoNumber.length == 0){
-		var inserthtml = '<h1>Please save your code!</h1>'
+		var inserthtml = '<h1 id="code-list-title">Please save your code!</h1>'
 		$(".code-container").html(inserthtml)
 	}
 
 }
 
 
-
-
-
+var fold = document.getElementById('fold');
+var status = "open";
+//edit my code
+$(".fold").on("click" , function(event){  
+	if (status == "open"){
+		$('.fold').attr({src:"/images/assets/unfold-icon-03.png"})
+		$(".side-info p").hide();
+		$(".wrapper").addClass('open')
+		status = "close";
+	}else{
+		$('.fold').attr({src:"/images/assets/shrink-icon-04.png"})
+		$(".side-info  p").show();
+		$(".wrapper").removeClass('open')
+		status = "open";
+	}
+}) 
 
 
 

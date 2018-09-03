@@ -210,8 +210,7 @@ router.post('/deleteCode', function(req, res){
 /* GET mycode page. */
 router.get('/mycode', function(req, res, next) {
   if (req.session.user){
-    //console.log(req.session.user);
-    res.render('mycode', { title: 'mycode' });
+    res.render('mycode', { title: 'mycode', user: req.session.user });
   }else{
     res.redirect('/login');
   }

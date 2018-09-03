@@ -2,61 +2,74 @@ extends layout
 
 block content
   .wrapper
+    aside.side-info
+      a(href="#")
+         img.fold(src='/images/assets/shrink-icon-04.png') 
+      ol
+        li.active
+          a(href="/")
+            icon
+              img(src='/images/assets/home-icon-03.png') 
+            p
+              |Home
+        li
+          a(href="/mycode")
+            icon
+              img(src='/images/assets/mycode-icon-04.png') 
+            p
+              |Mycode
+        li
+          a(href="/account")
+            icon
+              img(src='/images/assets/accound-icon-03.png') 
+            p
+              |Account
     div.header-wrapper
         ol.breadcrumb
           li
-            a(href="home")
-              |Tuetle
+            a(href="/home" )
+              |Truetle
           li.active
               |#{title} 
-        .dropdown
-          button.user-info.btn.btn-default.dropdown-toggle#dropdownMenu1(data-toggle="dropdown" aria-haspopup="true" aria-expanded="true")
-            |#{user.username}
-            span.caret
-          ul.dropdown-menu(aria-labelledby="dropdownMenu1")
-            li
-                a#mycode(href="/mycode")
-                  |Mycode
-            li
-              a#account(href="/account")
-                |Account
-            li(role="separator" class="divider")
-            li
-              a#logout(href="/login")
-                |logout 
-    div.editor.body-wrapper
-      .pane-wrapper
-        .control-list
+        .user-info
+          #logout
+            a(href="/login")
+              img(src='/images/assets/exit-icon-04.png') 
+          .user-name
+            p
+              |#{user.username}
+          .icon
+            img(src='/images/assets/user-icon-03.png')
+    .control-list
+        .left-control
           button.btn.btn-small(type="button" onclick="runit()") 
             |Run 
-          //button.btn.btn-small(type="button" onclick="stopit()") 
-          //|Stop 
           button.btn.btn-small(type="button" onclick="save()") 
             |Save 
           button.btn.btn-small(type="button" onclick="saveas()") 
             |Save as 
-        textarea#yourcode
-          |import turtle
-          |t = turtle
-          |print "start" 
-          |for i in range(50):
-          |    t.forward(i)
-          |    t.left(53)
-          |print "Hello World" 
-      .canvas-wrapper
-        ul.nav.nav-tabs
-          li(role="presentation" class="active" id="result-btn")
+        .right-control
+          button#result-btn.btn.btn-small
             a(href="#")
               |result
-          li(role="presentation" id="console-btn")
+          button#console-btn.btn.btn-small
             a(href="#")
-              span.glyphicon.glyphicon-remove-sign.hide
               | console
-        pre#output.hide
-        <!-- If you want turtle graphics include a canvas -->
-        div#mycanvas
-        include modals/alert
-        //include modals/confirm
+    .pane-wrapper
+      textarea#yourcode
+        |import turtle
+        |t = turtle
+        |print "start" 
+        |for i in range(50):
+        |    t.forward(i)
+        |    t.left(53)
+        |print "Hello World" 
+    .canvas-wrapper
+      pre#output.hide
+      <!-- If you want turtle graphics include a canvas -->
+      div#mycanvas
+      include modals/alert
+      //include modals/confirm
 
 block  scripts
     script(src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js')

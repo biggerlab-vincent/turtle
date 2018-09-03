@@ -1,32 +1,48 @@
-extends layout
+extends layout-login
 
 block content
-  div.header-wrapper
-        ol.breadcrumb
-          li
-            a(href="home")
-              |Tuetle
-          li.active
-              |#{title} 
+  div.header-wrapper.blue-title
+    ol.breadcrumb
+      li
+        a(href="home")
+          |Tuetle
+      li.active
+          |#{title} 
+      .line
   form.signup.well(action = "/update" method = "post")
-    div#avatar
-    div.input-group
-      lable(for = "username")
-        input(type="text" id="username" name="username" placeholder="username" required)
-      lable(for = "password")
-        input(type="password" id="password" name="password" placeholder="password" required)
-      lable(for = "phone")
-        input(type= "text" id="phone" name="phone" placeholder="phone" required)
-      lable(for = "email")
-        input(type="text" id="email" name="email" placeholder="email" required)
-      lable(for = "age")
-          input(type="number" id="age" name="age" placeholder="age" required)
-      lable(for = "bio")
-        textarea#bio(name="bio"  cols="30" rows="10" placeholder="Add a Bio" required)
+    div.signup-title
+    div.input-list
+      .input-left
+        .input-group-lg.input-group
+          span.input-group-addon#sizing-addon1
+              img(src="/images/assets/Username-icon.png")
+          input(type="text" aria-describedby="sizing-addon1" id="username" name="username" placeholder="Username" required)
+        .input-group-lg.input-group
+          span.input-group-addon#sizing-addon2
+            img(src="/images/assets/Username-icon.png")
+          input(type="password" aria-describedby="sizing-addon1" id="password" name="password" placeholder="Password" required)
+        .input-group-lg.input-group
+          span.input-group-addon#sizing-addon1
+            img(src="/images/assets/Username-icon.png")
+          input(type= "text" aria-describedby="sizing-addon1" id="phone" name="phone" placeholder="Phone" required)
+      .middle-line
+      .input-right
+        .input-group-lg.input-group
+          span.input-group-addon#sizing-addon1
+            img(src="/images/assets/Username-icon.png")
+          input(type="text" aria-describedby="sizing-addon1"  id="email" name="email" placeholder="Email" required)
+        .input-group-lg.input-group
+          span.input-group-addon#sizing-addon1
+            img(src="/images/assets/Username-icon.png")
+          input(type="number" aria-describedby="sizing-addon1"  id="age" name="age" placeholder="Age" required)
+        .input-group-lg.input-group
+          span.input-group-addon#sizing-addon1
+            img(src="/images/assets/Username-icon.png")
+          textarea#bio(name="bio" aria-describedby="sizing-addon1" cols="30" rows="10" placeholder="Add a Bio" required)
     div.control-btn
-      input(type = "submit" value="update" )
+      input(type = "submit" value="UPDATE" )
       a(href="/login")
-        |login
+        |LOGIN
 block  scripts
     script(src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js')
     scrript(src='/js/conrollers/userController.js')

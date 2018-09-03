@@ -1,21 +1,27 @@
-extends layout
+extends layout-login
 
 block content
-  div.header-wrapper
+  div.header-wrapper.blue-title
         ol.breadcrumb
           li
             a(href="home")
-              |Tuetle
+              |Truetle
           li.active
               |#{title} 
+          .line
   form.login(action = "/login" method = "post")
-    div.btn-group-vertical
-      lable(for = "username")
-        input(type="text" id="username" name="username" placeholder="username" required)
-      lable(for = "password")
+    div.login-title
+    div.input-list
+      .input-group-lg.input-group
+        span.input-group-addon#sizing-addon1
+          img(src="/images/assets/Username-icon.png")
+        input(type="text" aria-describedby="sizing-addon1" id="username" name="username" placeholder="username" required)
+      .input-group-lg.input-group
+        span.input-group-addon
+          img(src="/images/assets/Password-icon.png")
         input(type="password" id="password" name="password" placeholder="userpassword" required)
     div.control-btn
-      input(type = "submit" value="login" )
+      input(type = "submit" value="LOGIN" )
       div.signup
         a(href="/signup")
             |signup
