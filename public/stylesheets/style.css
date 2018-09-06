@@ -21,20 +21,17 @@ input{
   display:  block;
 }
 .wrapper{
-    height: 900px;
-    display: grid;
-    grid-template-columns: [col1-start] 70px [col2-start] auto  [col2-end];
-    grid-template-rows: [row1-start] 70px [row2-start] auto [row2-end];
-    background-color: #fff;
-    color: #444;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: [col1-start] 70px [col2-start] auto  [col2-end];
+  grid-template-rows: [row1-start] 70px [row2-start] auto [row2-end];
+  background-color: #fff;
+  color: #444;
 }
 .open{
-  height: 900px;
-  display: grid;
   grid-template-columns: [col1-start] 130px [col2-start] auto  [col2-end];
-    grid-template-rows: [row1-start] 70px [row2-start] auto [row2-end];
-    background-color: #fff;
-    color: #444;
 }
 
 .wrapper .side-info{
@@ -42,7 +39,6 @@ input{
   grid-row: row1-start / row2-end;
   background: #424857;
   padding-top: 70px;
-  margin-bottom: -40px;
 }
 .wrapper .side-info .fold{
  margin-left:20px; 
@@ -154,17 +150,19 @@ input{
   height: 100%;
 }
 .wrapper .editor-wrapper .turtle-editor{ 
-  height: 100%;
+  height: calc(100% - 40px);
 }
 .wrapper .editor-wrapper .pane-wrapper{
   width:50%;
   height: 100%;
   float:left;
+  
 }
 .wrapper .editor-wrapper .canvas-wrapper{
   width:50%;
    height: 100%;
   float:left;
+  
 }
 .CodeMirror{
   height: 100%;
@@ -191,10 +189,6 @@ input{
   margin-top: 0px;
   z-index: 3;
 }
-.body-wrapper .canvas-wrapper{
-  flex:1;
-  flex-direction: column;
-}
 
 
 
@@ -203,7 +197,7 @@ login signup
 */
 .login-body{
   background-image: url(/images/assets/Group-2.png);
-  height: 900px;
+  /*height: 900px;*/
 }
 
 .login-body .header-wrapper{
