@@ -23,18 +23,18 @@ input{
 .wrapper{
     height: 900px;
     display: grid;
-    grid-template-columns: [col1-start] 130px [col2-start] 50% [col3-start] 50% [col3-end];
-    grid-template-rows: [row1-start] 70px [row2-start] 40px [row3-start] auto [row3-end];
+    grid-template-columns: [col1-start] 70px [col2-start] auto  [col2-end];
+    grid-template-rows: [row1-start] 70px [row2-start] auto [row2-end];
     background-color: #fff;
     color: #444;
 }
 .open{
   height: 900px;
   display: grid;
-  grid-template-columns: [col1-start] 70px [col2-start] 50% [col3-start] 50% [col3-end];
-  grid-template-rows: [row1-start] 70px [row2-start] 40px [row3-start] auto [row3-end];
-  background-color: #fff;
-  color: #444;
+  grid-template-columns: [col1-start] 130px [col2-start] auto  [col2-end];
+    grid-template-rows: [row1-start] 70px [row2-start] auto [row2-end];
+    background-color: #fff;
+    color: #444;
 }
 
 .wrapper .side-info{
@@ -42,6 +42,7 @@ input{
   grid-row: row1-start / row2-end;
   background: #424857;
   padding-top: 70px;
+  margin-bottom: -40px;
 }
 .wrapper .side-info .fold{
  margin-left:20px; 
@@ -124,9 +125,13 @@ input{
   padding-left: 20px;
   border-left: 1px solid #424857;
 }
-.wrapper .control-list{
-  grid-column: col2-start / col3-end;
-  grid-row: row2-start;
+
+.wrapper .editor-wrapper{
+  grid-column: col2-start /col2-end;
+  grid-row: row2-start / row2-end;
+}
+.wrapper .editor-wrapper .control-list{
+  height: 40px;
 }
 .wrapper .control-list div{
   width:50%;
@@ -145,14 +150,21 @@ input{
 .wrapper .control-list .left-control .btn{
   font-size:18px;
 }
-
-.wrapper .pane-wrapper{
-  grid-column: col2-start;
-  grid-row: row3-start;
+.wrapper .editor-wrapper{
+  height: 100%;
 }
-.wrapper .canvas-wrapper{
-  grid-column: col3-start;
-  grid-row: row3-start;
+.wrapper .editor-wrapper .turtle-editor{ 
+  height: 100%;
+}
+.wrapper .editor-wrapper .pane-wrapper{
+  width:50%;
+  height: 100%;
+  float:left;
+}
+.wrapper .editor-wrapper .canvas-wrapper{
+  width:50%;
+   height: 100%;
+  float:left;
 }
 .CodeMirror{
   height: 100%;

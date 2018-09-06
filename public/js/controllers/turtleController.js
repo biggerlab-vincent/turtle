@@ -1,3 +1,4 @@
+
 // output functions are configurable.  This one just appends some text
 // to a pre element.
 function outf(text) { 
@@ -57,7 +58,7 @@ var editor = CodeMirror.fromTextArea(myTextarea, {
     gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
     matchBrackets: true,  //括号匹配
   });
-editor.setSize('100%', '790px');
+//editor.setSize('100%', '790px');
 $("#result-btn").click(function(){
     $("#mycanvas").removeClass("hide");
     $("#output").addClass("hide");
@@ -137,7 +138,7 @@ function editorModalAlert(){
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
         var r = window.location.search.substr(1).match(reg);  //匹配目标参数  
         if (r != null) return unescape(r[2]); return null; //返回参数值  
-}  
+    }  
 })(jQuery);  
 var id = $.getUrlParam('id');
 //console.log(id);
@@ -155,18 +156,15 @@ if(id){
     })
 } 
 var fold = document.getElementById('fold');
-var status = "open";
+var status = "close";
 //edit my code
-$(".fold").on("click" , function(event){  
-	if (status == "open"){
-		$('.fold').attr({src:"/images/assets/unfold-icon-03.png"})
-		$(".side-info p").hide();
-		$(".wrapper").addClass('open')
-		status = "close";
-	}else{
-		$('.fold').attr({src:"/images/assets/shrink-icon-04.png"})
-		$(".side-info  p").show();
-		$(".wrapper").removeClass('open')
-		status = "open";
-	}
+$(".side-info").mouseover(  function(){  
+    $('.fold').attr({src:"/images/assets/unfold-icon-03@3x.png"})
+    $(".side-info p").removeClass('hide');
+    $(".wrapper").addClass('open')
 }) 
+$(".side-info").mouseout(function () { 
+    $('.fold').attr({src:"/images/assets/shrink-icon-04@3x.png"})
+    $(".side-info  p").addClass('hide');
+    $(".wrapper").removeClass('open')
+});

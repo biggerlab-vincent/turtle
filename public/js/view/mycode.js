@@ -1,7 +1,7 @@
-$(document).ready(
-	loadCode()
-	
-)
+$(document).ready(function(){
+	loadCode();
+	foldmenu();
+})
 
 function loadCode() {
 	$.post('/mycode',function(data){
@@ -75,23 +75,18 @@ gb.ondrop= function(e){ //源对象松手释放在了目标对象中
 
 }
 
-
-var fold = document.getElementById('fold');
-var status = "open";
-//edit my code
-$(".fold").on("click" , function(event){  
-	if (status == "open"){
-		$('.fold').attr({src:"/images/assets/unfold-icon-03.png"})
-		$(".side-info p").hide();
+function foldmenu() {
+	$(".side-info").mouseover(  function(){  
+		$('.fold').attr({src:"/images/assets/unfold-icon-03@3x.png"})
+		$(".side-info p").removeClass('hide');
 		$(".wrapper").addClass('open')
-		status = "close";
-	}else{
-		$('.fold').attr({src:"/images/assets/shrink-icon-04.png"})
-		$(".side-info  p").show();
+	}) 
+	$(".side-info").mouseout(function () { 
+		$('.fold').attr({src:"/images/assets/shrink-icon-04@3x.png"})
+		$(".side-info  p").addClass('hide');
 		$(".wrapper").removeClass('open')
-		status = "open";
-	}
-}) 
+	});
+}
 
 
 
