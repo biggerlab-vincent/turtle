@@ -43,7 +43,7 @@ input{
 .wrapper .side-info .fold{
  margin-left:20px; 
  margin-top: 10px;
- width: 18px;
+ width: 14px;
  height: 16px;
 } 
 .wrapper .side-info ol{
@@ -67,7 +67,7 @@ input{
   font-size: 14px;
   color: #FFFFFF;
   float: right;
-  margin-right: 20px;
+  margin-right: 10px;
   margin-top : 10px;
  }
 .wrapper  .header-wrapper{
@@ -132,10 +132,11 @@ input{
 .wrapper .control-list div{
   width:50%;
   float:left;
+  margin-top: 3px;
 }
 .wrapper .control-list a {
   font-family: PingFangSC-Medium;
-  font-size: 18px;
+  font-size: 14px;
   color: #424857;
 }
 .wrapper .control-list a::before {
@@ -144,7 +145,8 @@ input{
   content: "|";
 }
 .wrapper .control-list .left-control .btn{
-  font-size:18px;
+  font-size:14px;
+  text-align: center;
 }
 .wrapper .editor-wrapper{
   height: 100%;
@@ -156,13 +158,11 @@ input{
   width:50%;
   height: 100%;
   float:left;
-  
 }
 .wrapper .editor-wrapper .canvas-wrapper{
   width:50%;
-   height: 100%;
+  height: 100%;
   float:left;
-  
 }
 .CodeMirror{
   height: 100%;
@@ -178,17 +178,18 @@ input{
   border-top:0px solid #fff;
 }
 #mycanvas{
-  height: 100%;
   width: 100%;
+  height: 100%;
   overflow: scroll;
   outline: none;
   box-sizing: border-box;
-  border-left: 1px solid #ddd;
+  border: 1px solid #ddd;
   position: relative;
   display: block;
   margin-top: 0px;
   z-index: 3;
 }
+
 
 
 
@@ -375,6 +376,7 @@ login signup
   font-size: 24px;
   color: #FFFFFF;
   float:left;
+  text-align: center;
 }
 .well .control-btn a{  
   width: 324px;
@@ -473,7 +475,7 @@ mycode
   font-family: Raleway,sans-serif;
   color: #424242;
   text-align: right;
-  font-size: 18px;
+  font-size: 14px;
   margin: 0 auto;
 }
 .distbin img{

@@ -11,7 +11,12 @@ router.get('/signup', function(req, res, next) {
 });
 /* GET login page. */
 router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Login' });
+  if (req.session.user){
+    //console.log(req.session.user);
+    res.redirect('/');
+  }else{
+    res.render('login', { title: 'login' });
+  }
 });
 
 
@@ -31,10 +36,10 @@ router.post('/login',function(req, res){
     if(data){
       //res.send('登录成功');
       //console.log(data);
-      console.log("signup successed");
-      res.redirect('home');
+      console.log("login successed");
+      res.status(200).send('OK');
     }else{
-      res.status(400).send('账号或密码错误');
+      res.status(200).send('failed');
       //res.send('账号或密码错误');
     }
   })
@@ -44,7 +49,6 @@ router.post('/signup', function(req, res){
     //console.log(req.body)
     var postData = {
       username: req.body.username,
-      Avatar : String,
       password : req.body.password,
       email : req.body.email,
       phone : req.body.phone,
@@ -54,13 +58,18 @@ router.post('/signup', function(req, res){
     req.session.user = postData;
     TurtleUser.findOne({username: postData.username},function(err,data){
       if(data){
-        res.send("username used");
+        console.log({'err':'username used'})
+        res.status(200).send('failed');
+        //res.end();
       }else{
         TurtleUser.create(postData,function(err, data){
-          if(err) throw err;
-          console.log("signup successed");
+          if(err) {console.log(err)};
+          //console.log(1)
+          res.status(200).send('OK');
+          //console.log("signup successed");
           //editorModalAlert("Signup Successfully!");
-          res.redirect('/home');
+          console.log(2)
+          //res.redirect('/home');
         })
       }
     })
@@ -108,7 +117,6 @@ router.post('/update', function(req, res){
   //var userEntity = new TurtleUser(req.body);
   var postData = {
     username: req.body.username,
-    //Avatar : String,
     password : req.body.password,
     email : req.body.email,
     phone : req.body.phone,
@@ -129,7 +137,7 @@ router.post('/update', function(req, res){
         if(err) {
           throw err;
         }else{
-          console.log(data);
+          //console.log(data);
           console.log("update successed");
           res.status(200).send("ok");
         }

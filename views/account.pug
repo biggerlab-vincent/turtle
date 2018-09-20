@@ -43,7 +43,11 @@ block content
       input(type = "submit" value="UPDATE" )
       a(href="/login")
         |LOGIN
+    include modals/alert
+    include modals/confirm
 block  scripts
     script(src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js')
+    script(src='https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.js')
+    script(src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" )
     scrript(src='/js/conrollers/userController.js')
     script(src='/js/view/account.js')

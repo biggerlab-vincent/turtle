@@ -7,34 +7,33 @@ $(document).ready(function(){
 		$('#age').val(data.age);
 		$('#bio').val(data.bio);
 	},"json")
-	
+	//update 
+	var options = {
+		url:        "/update",
+		type:       "post",
+		dataType:    null,
+		success:    function(data){
+							console.log(data)
+							if (data=="ok"){
+								editorModalAlert("Successfully update!")
+							}
+					}
+	}
+	$('.signup').ajaxForm(options); 
+
 })
 
-
-//edit my code 
-$('.code-demo').on('click', function () {
-	var id=$(".code-demo").attr('class');
-	console.log(id);
-	//var lessonID = $('.codeId').eq(index).val();
-	//var id = $('.id').eq(index).val();
-	var url = "/home?id=" + id;
-	window.location.href = url;
-	//console.log(index,lessonID,id);
-	/*
-	$.ajax({
-		type: "POST",
-		url: "edit_code",
-		data: {"id":id },
-		success: function(data){
-			console.log(data);
-			id_edit = data._id;
-			code_edit = data.code;
-			console.log(id_edit,code_edit);
-			var url = "/home?code_edit=" + code_edit+ "&id_edit=" + id_edit;
-			window.location.href = url;
-		}
-	  })
-	  */
-  })
+//Alert 
+function editorModalAlert(msg) {
+	var if_succeed = msg.indexOf("Successfully");
+	$('.modal-alert').modal({ show: false, keyboard: false, backdrop: 'static' });
+	if (if_succeed == -1) {
+		$('.modal-alert .modal-header h4').text('Fail!');
+	} else {
+		$('.modal-alert .modal-header h4').text('Success!');
+		//setTimeout(function () { window.location.reload(); }, 2000);
+	}
+	$('.modal-alert .modal-body p').html(msg);
+	$('.modal-alert').modal('show');
   
-  
+  }

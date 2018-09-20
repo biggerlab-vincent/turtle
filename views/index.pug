@@ -50,29 +50,31 @@ block content
                 |Save 
               button.btn.btn-small(type="button" onclick="saveas()") 
                 |Save as 
+              button.btn.btn-small(type="button" onclick="stopit()") 
+                |Stop 
             .right-control
               button#result-btn.btn.btn-small
                 a(href="#")
                   |result
               button#console-btn.btn.btn-small
                 a(href="#")
-                  | console
+                  img.glyphicon-remove-sign.hide(src='/images/deletion-icon.png' style= "width: 15px") 
+                  | console            
         .turtle-editor
           .pane-wrapper
             textarea#yourcode
               |import turtle
-              |t = turtle
               |print "start" 
               |for i in range(50):
-              |    t.forward(i)
-              |    t.left(53)
+              |   turtle.forward(i)
+              |   turtle.left(53)
               |print "Hello World" 
           .canvas-wrapper
             pre#output.hide
             <!-- If you want turtle graphics include a canvas -->
             div#mycanvas
-            include modals/alert
-            //include modals/confirm
+  include modals/alert
+  include modals/confirm
 
 block  scripts
     script(src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js')
@@ -83,5 +85,6 @@ block  scripts
     script(src='/js/common/skulpt-stdlib.js')
     script(src='/lib/codemirror-5.39.0/lib/codemirror.js')
     script(src="/lib/codemirror-5.39.0/mode/python/python.js")
+    script(src='/js/view/editor.js')
     script(src='/js/controllers/turtleController.js')
     script(src='/js/controllers/userController.js')

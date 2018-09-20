@@ -19,7 +19,9 @@ function builtinRead(x) {
 function runit() { 
     $(".glyphicon-remove-sign").addClass("hide"); 
    var prog = editor.getValue(); 
-   console.log(editor.getValue())
+   //var prog =prog + ""
+   //prog.insert
+   console.log(prog)
    var mypre = document.getElementById("output"); 
    mypre.innerHTML = ''; 
    Sk.pre = "output";
@@ -28,12 +30,13 @@ function runit() {
    var myPromise = Sk.misceval.asyncToPromise(function() {
        return Sk.importMainWithBody("<stdin>", false, prog, true);
    });
+   Sk.TurtleGraphics.target.height = 1200;
    myPromise.then(function(mod) {
         $(".glyphicon-remove-sign").addClass("hide"); 
         console.log('success');
    },
        function(err) {
-           $(".glyphicon-remove-sign").removeClass("hide");
+        $(".glyphicon-remove-sign").removeClass("hide");
         mypre.innerHTML = err.toString(); 
         console.log(err.toString());
    });
@@ -41,6 +44,24 @@ function runit() {
 function stopit() { 
     var mypre = document.getElementById("output"); 
     mypre.innerHTML = 'Stop'; 
+    prog = 'import turtle\nturtle.clear()\n'
+    prog =prog.toString();
+    mypre.innerHTML = 'Stop'; 
+    Sk.pre = "output";
+    Sk.configure({output:outf, read:builtinRead}); 
+    (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+    var myPromise = Sk.misceval.asyncToPromise(function() {
+        return Sk.importMainWithBody("<stdin>", false, prog, true);
+    });
+    myPromise.then(function(mod) {
+         $(".glyphicon-remove-sign").addClass("hide"); 
+         console.log('success');
+    },
+        function(err) {
+            $(".glyphicon-remove-sign").removeClass("hide");
+         mypre.innerHTML = err.toString(); 
+         console.log(err);
+    });
    // $('#mycanvas').width = $('#mycanvas').width
 
  } 
@@ -59,19 +80,6 @@ var editor = CodeMirror.fromTextArea(myTextarea, {
     matchBrackets: true,  //括号匹配
   });
 //editor.setSize('100%', '790px');
-$("#result-btn").click(function(){
-    $("#mycanvas").removeClass("hide");
-    $("#output").addClass("hide");
-    $("#result-btn").addClass("active");
-    $("#console-btn").removeClass("active");
-  });
-$("#console-btn").click(function(){
-    $("#mycanvas").addClass("hide");
-    $("#output").removeClass("hide");
-    $("#result-btn").removeClass("active");
-    $("#console-btn").addClass("active");
-  });
-
   //save save-as
 function save(){
     var id = $.getUrlParam('id');
@@ -86,17 +94,21 @@ function save(){
             code: code
         }
         $.post('save',data,function(data){
+            console.log(data)
             if (data) {
                 console.log("Saved");
-                alert('Congratulations!Successfully saved!')
+                editorModalAlert("Successfully! Successfully saved! ")
+                //alert('Congratulations!Successfully saved!')
             }else{
-                alert('Opps!There was a problem!')
+                editorModalAlert("Failded! Opps! There was a problem! ")
+                //alert('Opps!There was a problem!')
             }
         
             //editorModalAlert("Successfully Saved.")
         })
     }else{
-        alert('Opps! Select your code please!')
+        editorModalAlert("Failded! Opps! Select your code please! ")
+        //alert('Opps! Select your code please!')
     }
     
 }
@@ -114,11 +126,13 @@ function saveas(){
         }
         $.post("saveas", data, function (data) {
             console.log("Saved");
-            alert('Congratulations!Successful saved!');
+            editorModalAlert("Successfully! Successful saved!")
+            //alert('Congratulations!Successful saved!');
             //editorModalAlert("Successfully Saved.")
         });
     }else{
-        alert('Opps! Type your code title please!');
+        editorModalAlert("Failed! Type your code title please!")
+        //alert('Opps! Type your code title please!');
         //editorModalAlert("Filed Saved. Please type you project name.");
         return;
     }
@@ -128,43 +142,19 @@ function deleteCode(){
         console.log("deleted success");
     })
 }
-function editorModalAlert(){
+
+
+//Alert 
+function editorModalAlert(msg) {
+    var if_succeed = msg.indexOf("Successfully");
+    $('.modal-alert').modal({ show: false, keyboard: false, backdrop: 'static' });
+    if (if_succeed == -1) {
+        $('.modal-alert .modal-header h4').text('Fail!');
+    } else {
+        $('.modal-alert .modal-header h4').text('Success!');
+        //setTimeout(function () { window.location.reload(); }, 2000);
+    }
+    $('.modal-alert .modal-body p').html(msg);
+    $('.modal-alert').modal('show');
 
 }
-//接收edit-code参数
-(function ($) {  
-    //扩展方法获取url参数  
-    $.getUrlParam = function (name) {  
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
-        var r = window.location.search.substr(1).match(reg);  //匹配目标参数  
-        if (r != null) return unescape(r[2]); return null; //返回参数值  
-    }  
-})(jQuery);  
-var id = $.getUrlParam('id');
-//console.log(id);
-if(id){
-    $.ajax({
-        type: "POST",
-        url: "codeEdit",
-        data: {"id": id },
-        success: function(data){
-            //var prog = editor.getValue(); 
-            console.log(data.code);
-            editor.setValue(data.code);
-        },
-        dataType: "json"
-    })
-} 
-var fold = document.getElementById('fold');
-var status = "close";
-//edit my code
-$(".side-info").mouseover(  function(){  
-    $('.fold').attr({src:"/images/assets/unfold-icon-03@3x.png"})
-    $(".side-info p").removeClass('hide');
-    $(".wrapper").addClass('open')
-}) 
-$(".side-info").mouseout(function () { 
-    $('.fold').attr({src:"/images/assets/shrink-icon-04@3x.png"})
-    $(".side-info  p").addClass('hide');
-    $(".wrapper").removeClass('open')
-});

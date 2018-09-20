@@ -39,10 +39,16 @@ block content
             img(src="/images/assets/add-icon.png")
           textarea#bio(name="bio" aria-describedby="sizing-addon1" cols="30" rows="10" placeholder="Add a Bio" required)
     div.control-btn
-      input(type = "submit" value="SUBMIT" )
+      input(type = "submit" value="SIGNUP" )
       a(href="/login")
         |LOGIN
+  include modals/alert
+  include modals/confirm
 
 block  scripts
     script(src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js')
+    script(src='https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.js')
+    script(src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" )
     script(src='/js/controllers/userController.js')
+    script(src='/js/view/signup.js')
+    
