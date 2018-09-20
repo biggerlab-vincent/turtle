@@ -26,7 +26,7 @@ app.use(favicon(path.join(__dirname ,'public/images','favicon.ico')));
 //mongoose
 var mongoose = require('mongoose')
 //Set up default mongoose connection
-var mongoDB = 'mongodb://localhost/biggerlab';
+var mongoDB = 'mongodb://47.100.121.67/turtle';
 mongoose.connect(mongoDB);
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;

@@ -57,7 +57,7 @@ gb.ondrop= function(e){ //源对象松手释放在了目标对象中
 	//删除被拖动的源对象
 	this.setAttribute("src","/images/assets/rubbish-icon.png")
 	var a = document.getElementById(selectID);
-	console.log(selectID);
+	//console.log(selectID);
 	mycode.removeChild(a);  //从父元素中删除子节点
 	$.post("/deleteCode",{"id": selectID},function(err,data){
 		if(err){

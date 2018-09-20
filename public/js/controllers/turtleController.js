@@ -21,7 +21,7 @@ function runit() {
    var prog = editor.getValue(); 
    //var prog =prog + ""
    //prog.insert
-   console.log(prog)
+   //console.log(prog)
    var mypre = document.getElementById("output"); 
    mypre.innerHTML = ''; 
    Sk.pre = "output";
@@ -94,7 +94,7 @@ function save(){
             code: code
         }
         $.post('save',data,function(data){
-            console.log(data)
+            //console.log(data)
             if (data) {
                 console.log("Saved");
                 editorModalAlert("Successfully! Successfully saved! ")
@@ -116,7 +116,7 @@ function saveas(){
     var name = prompt("Please type you project name.", "");
     if (name){
         var code = editor.getValue();
-        console.log(code);
+        //console.log(code);
         var date  = new Date();
         var time = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
         var data = {

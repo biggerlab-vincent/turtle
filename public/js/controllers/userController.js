@@ -1,8 +1,10 @@
 function UserController(){
 
     $('#logout').click(function(){
-        $.get("/logout", function(err){
-            if(err)console.log(err);
+        $.post("/logout", function(data){
+            if (data == "ok"){
+                window.location.href="/login"
+            }
         })
     });
    

@@ -75,12 +75,15 @@ router.post('/signup', function(req, res){
     })
     
 })
-router.get('/logout', function(req, res){
+router.post('/logout', function(req, res){
+  res.clearCookie('user');
+  res.clearCookie('pass');
   req.session.destroy(function(err) {
     if(err){
       console.log(err);
     }else{
       console.log("logout successed!");
+      res.status(200).send("ok");
       //window.location.href = '/login';
     }
     // cannot access session here
@@ -105,7 +108,6 @@ router.post('/account', function(req, res, callback) {
       //console.log(data);
       req.session.user = data;
       res.json(data);
-      
     }else{
       //console.log(0);
       console.log(err);
